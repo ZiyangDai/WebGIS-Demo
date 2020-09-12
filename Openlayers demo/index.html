@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Openlayers Demo</title>
+    <link href="https://cdn.bootcss.com/openlayers/4.6.5/ol.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/openlayers/4.6.5/ol.js"></script>
+    <style>
+        .map{
+            width: 100%;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>openlayers demo</h2>
+    <div id="map" class="map"></div>
+    <script>
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                    })
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.transform([135.3, 34.4], 'EPSG:4326', 'EPSG:3857'),
+                zoom: 7
+            })
+        });
+    </script>    
+</body>
+
+</html>
